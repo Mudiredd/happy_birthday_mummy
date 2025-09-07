@@ -567,7 +567,7 @@
 <body>
 
     <!-- Ganti Audio di sini -->
-    <audio src="" id="linkmp3" class="sembunyi"></audio>
+    <audio src="assets/audio file.mp3" id="linkmp3" class="sembunyi" loop></audio>
 
     <div id="bodyblur">
         <!-- Wallpaper --><img src="./assets/wp.jpg" id="wallpaper" alt="Birthday wallpaper" />
@@ -618,8 +618,9 @@
                 <p id="pesan8" class="gaya2">Souuuuuuuu.....</p>
                 <p id="pesan9" class="gaya2">Hope you’re happy on your special day, you must be happy! 
                    and maa attha ni adigina ani cheppu ! &#10084;</p>
-                <p id="pesan10" class="gaya2">Thank you for your love , caring about me, and always being
-                    there for me. Love you, mummaa... &#10084;</p>
+                <p id="pesan10" class="gaya2">To the most beautiful soul i know-- 
+                    thank you for your love that never fades,your care that never ends,and your support that never breaks.
+                    Love you, Mummaa.. &#10084;</p>
 
                 <!-- Tombol Lanjut -->
                 <p id="opsL">Click to Continue</p>
@@ -641,9 +642,46 @@
     </div>
 
     <script>
-        const body = document.querySelector("body"); const swalst = Swal.mixin({ timer: 2300, allowOutsideClick: false, showConfirmButton: false, timerProgressBar: true, imageHeight: 90, }); audio = new Audio('' + linkmp3.src); ftganti = 0; fungsi = 0; fungsiAwal = 0; deffotostiker = fotostiker.src; function berjatuhan() { const heart = document.createElement("div"); heart.className = "fas fa-snowflake"; heart.style.left = (Math.random() * 90) + "vw"; heart.style.animationDuration = (Math.random() * 3) + 2 + "s"; body.appendChild(heart); } setInterval(function name(params) { var heartArr = document.querySelectorAll(".fa-snowflake"); if (heartArr.length > 100) { heartArr[0].remove() } }, 100); Content.style = "opacity:1;margin-top:16vh"; const swals = Swal.mixin({ allowOutsideClick: false, cancelButtonColor: '#FF0040', imageHeight: 80, });
+        const body = document.querySelector("body"); 
+        const swalst = Swal.mixin({ 
+            timer: 2300, 
+            allowOutsideClick: false, 
+            showConfirmButton: false, 
+            timerProgressBar: true, 
+            imageHeight: 90, 
+        }); 
+        
+        let audio;
+        // Initialize audio when document is ready
+        document.addEventListener('DOMContentLoaded', function() {
+            audio = document.getElementById('linkmp3');
+            audio.load(); // Preload the audio
+        });
+        
+        ftganti = 0; 
+        fungsi = 0; 
+        fungsiAwal = 0; 
+        deffotostiker = fotostiker.src; function berjatuhan() { const heart = document.createElement("div"); heart.className = "fas fa-snowflake"; heart.style.left = (Math.random() * 90) + "vw"; heart.style.animationDuration = (Math.random() * 3) + 2 + "s"; body.appendChild(heart); } setInterval(function name(params) { var heartArr = document.querySelectorAll(".fa-snowflake"); if (heartArr.length > 100) { heartArr[0].remove() } }, 100); Content.style = "opacity:1;margin-top:16vh"; const swals = Swal.mixin({ allowOutsideClick: false, cancelButtonColor: '#FF0040', imageHeight: 80, });
 
-        document.getElementById("kadoIn").onclick = function () { if (fungsiAwal == 0) { audio.play(); fungsiAwal = 1; kadoIn.style = "transition:all .30s ease;transform:scale(10);opacity:0"; wallpaper.style = "transform: scale(1.6);"; ket.style = "display:none"; setTimeout(initengahan, 500); setTimeout(inipesan, 500) } }
+        document.getElementById("kadoIn").onclick = function () { 
+            if (fungsiAwal == 0) { 
+                audio = document.getElementById('linkmp3');
+                audio.volume = 0.5; // Set volume to 50%
+                audio.play()
+                    .then(() => {
+                        console.log("Audio started playing");
+                    })
+                    .catch(error => {
+                        console.log("Audio play failed:", error);
+                    });
+                fungsiAwal = 1; 
+                kadoIn.style = "transition:all .30s ease;transform:scale(10);opacity:0"; 
+                wallpaper.style = "transform: scale(1.6);"; 
+                ket.style = "display:none"; 
+                setTimeout(initengahan, 500); 
+                setTimeout(inipesan, 500) 
+            } 
+        }
 
         async function inipesan() {
             var { value: nama } = await swals.fire({
@@ -656,7 +694,7 @@
                 window.nama = nama;
                 vketikhalo = "Hi, " + nama + " &#10084;";
                 await swals.fire('hii, ' + nama +' gaaaaru..' +' ツ');
-                await swals.fire('congrats naakanna mundhu neeke 20 years occhai...😂!');
+                await swals.fire('congrats naa..kanna mundhu neeke 20 years occhai...😂!');
                 await swals.fire('Happy birthday! mummaa..🎉');
                 await swals.fire('maybe ninnu wish cheyydam idhe last anukunta...&#x1F642;');
                 pilihwarna();
@@ -852,7 +890,10 @@
             wallpaper.style = "transform: scale(1);";
             ftganti = 4; ftmuncul();
             new TypeIt("#pesan8", {
-                strings: ["" + vketik8, "" + vketik9], startDelay: 500, speed: 75, cursor: true, deleteSpeed: 50, breakLines: false, waitUntilVisible: true, lifelike: true,
+                strings: ["" + vketik8, "" + vketik9], 
+                startDelay: 500, 
+                speed: 75,  // Slower typing speed
+                cursor: true, deleteSpeed: 50, breakLines: false, waitUntilVisible: true, lifelike: true,
                 afterComplete: function () {
                     pesan8.innerHTML = vketik9; setTimeout(otomatis, 2500); setTimeout(aktipesan10, 3000);
                 },
